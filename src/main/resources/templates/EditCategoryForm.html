@@ -2,7 +2,7 @@
 <html xmlns:th="https://www.thymeleaf.org">
 <head>
 <meta charset="utf-8">
-<title>Add Category</title>
+<title>Edit Category</title>
 </head>
 <body>
 	<th:block th:insert="TopSideNavBar.html"> </th:block>
@@ -16,17 +16,20 @@
                                 <div class="card shadow-lg border-0 rounded-lg mt-5">
                                     <div class="card-header"><h3 class="text-center font-weight-light my-4">Add Category</h3></div>
                                     <div class="card-body">
-                                        <form action="/category/add" method="post">
+                                        <form action="/category/update" method="post" th:object="${categoryObject}">
                                         	
                                             <div class="form-floating mb-3">
-                                                <input class="form-control" id="inputEmail" type="text" name="categoryName" placeholder="categoryName" />
+                                                <input class="form-control" id="inputEmail" type="text" name="categoryName" th:field="*{categoryName}" placeholder="categoryName" />
                                                 <label for="inputUsername">Category Name</label>
                                             </div>
                                             
                                             <div class="d-flex align-items-center justify-content-between mt-4 mb-0">
                                                
-                                                <input type="submit"  class="btn btn-primary " value="Add Category"/>
+                                                <input type="submit"  class="btn btn-success " value="Update"/>
                                             </div>
+                                            
+                                            <input type="hidden" th:field="*{id}">
+                                            
                                         </form>
                                     </div>
                                 </div>
