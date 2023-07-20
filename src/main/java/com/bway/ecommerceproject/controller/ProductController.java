@@ -1,10 +1,5 @@
 package com.bway.ecommerceproject.controller;
 
-import java.io.IOException;
-import java.nio.file.Files;
-import java.nio.file.Path;
-import java.nio.file.StandardCopyOption;
-
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
@@ -52,7 +47,7 @@ public class ProductController {
 			return "AddProductForm";
 		}
 		
-		return "redirect:/product/add";
+		return "AddProductForm";
 	}
 	
 	@GetMapping("/list")
@@ -72,5 +67,37 @@ public class ProductController {
 		
 		return "redirect:/product/list";
 	}
+	
+	@GetMapping("/delete")
+	public String deleteProduct(@RequestParam int id) {
+		prodServ.deleteProduct(id);
+		return "ViewProductForm";
+	}
+	
+	@GetMapping("/edit")
+	public String editProduct(@RequestParam int id, Model model) {
+		model.addAttribute("categoryList", catServ.getAllCategory());
+		model.addAttribute("productObject", prodServ.getProductById(id));
+		return "EditProductForm";
+	}
 
+	@PostMapping("/edit")
+	public String postEditProduct(@ModelAttribute Product product, @RequestParam MultipartFile img, Model model) {
+		
+		if(!img.isEmpty()) {
+			
+			String imageName = img.getOriginalFilename();
+			product.setImage(imageName);
+			fileUtil.imageUpload(img);
+			prodServ.addProduct(product);
+			
+			return "redirect:/product/list";
+		}else {
+			prodServ.addProduct(product);
+			
+			return "redirect:/product/list";
+			
+		}
+	}
+	
 }
