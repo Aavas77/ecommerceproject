@@ -19,17 +19,17 @@
                                         <form action="/product/edit" method="post" th:object="${productObject}" enctype="multipart/form-data">
                                         	               
                                         	<div class="form-floating mb-3">
-                                                <input class="form-control" type="text" name="name" th:field="*{name}"/>
+                                                <input class="form-control" type="text" name="name" th:field="*{name}" required/>
                                                 <label for="inputProductname">Product Name</label>
                                             </div>
                                             
                                             <div class="form-floating mb-3">
-                                                <input class="form-control" type="text" name="company" th:field="*{company}"/>
+                                                <input class="form-control" type="text" name="company" th:field="*{company}" required/>
                                                 <label for="inputCompanyname">Company</label>
                                             </div>
                                             
                                             <div class="form-floating mb-3">
-                                                <input class="form-control" type="text" name="price" th:field="*{price}" />
+                                                <input class="form-control" type="text" name="price" th:field="*{price}" required/>
                                                 <label for="inputPrice">Price</label>
                                             </div>
                                             
@@ -46,7 +46,7 @@
                                            
                                            
                                               <div class="form-floating mb-3">
-                                                <select name="category" class="form-control">
+                                                <select name="category" class="form-control" required>
                                                 	<option value="" >Select</option>
                                                 	<option th:each="c : ${categoryList}" th:value="${c.id}">[[${c.categoryName}]]</option>
                                                 </select>
@@ -54,20 +54,17 @@
                                             </div>
                                             
                                             <div class="form-floating mb-3">
-                                                <textarea rows="3" style="height:100%" name="description" class="form-control" th:field="*{description}"></textarea>
+                                                <textarea rows="3" style="height:100%" name="description" class="form-control" th:field="*{description}" required></textarea>
                                                 <label for="inputProductDescription">Product Description</label>
                                             </div>
                                             
                                             <div class="d-flex align-items-center justify-content-between mt-4 mb-0">
-                                               
                                                 <input type="submit"  class="btn btn-success " value="Update Product"/>
                                             </div>
                                             
                                             <input type="hidden" th:field="*{id}">
                                             
                                         </form>
-                                        
-                                        <p style="color:green">[[${message}]]</p>
                                         
                                     </div>
                                 </div>

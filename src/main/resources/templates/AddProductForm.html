@@ -19,27 +19,27 @@
                                         <form action="/product/add" enctype="multipart/form-data" method="post">
                                         	
                                             <div class="form-floating mb-3">
-                                                <input class="form-control" type="text" name="name" placeholder="Product Name" />
+                                                <input class="form-control" type="text" name="name" placeholder="Product Name" required/>
                                                 <label for="inputProductname">Product Name</label>
                                             </div>
                                             
                                             <div class="form-floating mb-3">
-                                                <input class="form-control" type="text" name="company" placeholder="Company Name" />
+                                                <input class="form-control" type="text" name="company" placeholder="Company Name" required/>
                                                 <label for="inputCompanyname">Company</label>
                                             </div>
                                             
                                             <div class="form-floating mb-3">
-                                                <input class="form-control" type="text" name="price" placeholder="price" />
+                                                <input class="form-control" type="text" name="price" placeholder="price" required/>
                                                 <label for="inputPrice">Price</label>
                                             </div>
                                             
                                             <div class="form-floating mb-3">
-                                                <input class="form-control" type="file" name="img" accept="image/png, image/jpeg" placeholder="Product Image" />
+                                                <input class="form-control" type="file" name="img" accept="image/png, image/jpeg" placeholder="Product Image" required/>
                                                 <label for="inputImage">Image</label>
                                             </div>
                                             
                                             <div class="form-floating mb-3">
-                                                <select name="category" class="form-control">
+                                                <select name="category" class="form-control" required>
                                                 	<option value="">Select</option>
                                                 	<option th:each="c : ${categoryList}" th:value="${c.id}">[[${c.categoryName}]]</option>
                                                 </select>
@@ -47,7 +47,7 @@
                                             </div>
                                             
                                             <div class="form-floating mb-3">
-                                                <textarea rows="3" style="height:100%" name="description" class="form-control"></textarea>
+                                                <textarea rows="3" style="height:100%" name="description" class="form-control" required></textarea>
                                                 <label for="inputProductDescription">Product Description</label>
                                             </div>
                                             
@@ -56,8 +56,8 @@
                                                 <input type="submit"  class="btn btn-primary " value="Add Product"/>
                                             </div>
                                         </form>
-                                        
-                                        <p>[[${message}]]</p>
+                                        <br>
+                                        <p style="color:green">[[${message}]]</p>
                                         
                                     </div>
                                 </div>

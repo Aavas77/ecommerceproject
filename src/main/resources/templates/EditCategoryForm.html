@@ -19,7 +19,7 @@
                                         <form action="/category/update" method="post" th:object="${categoryObject}">
                                         	
                                             <div class="form-floating mb-3">
-                                                <input class="form-control" id="inputEmail" type="text" name="categoryName" th:field="*{categoryName}" placeholder="categoryName" />
+                                                <input class="form-control" id="inputEmail" type="text" name="categoryName" th:field="*{categoryName}" placeholder="categoryName" required/>
                                                 <label for="inputUsername">Category Name</label>
                                             </div>
                                             

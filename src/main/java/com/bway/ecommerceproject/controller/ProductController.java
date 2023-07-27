@@ -44,7 +44,7 @@ public class ProductController {
 			fileUtil.imageUpload(img);
 			prodServ.addProduct(product);
 			model.addAttribute("message", "Product added successfully !!");
-			return "AddProductForm";
+			return "redirect:/product/add";
 		}
 		
 		return "AddProductForm";
@@ -98,6 +98,12 @@ public class ProductController {
 			return "redirect:/product/list";
 			
 		}
+	}
+	
+	@GetMapping("/listByCategory")
+	public String viewProductByCategory(@RequestParam int id, Model model) {
+		model.addAttribute("products", prodServ.getProductByCategory(id));
+		return "ListProductByCategoryForm";
 	}
 	
 }
