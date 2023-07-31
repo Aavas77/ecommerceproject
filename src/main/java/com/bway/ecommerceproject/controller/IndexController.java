@@ -7,7 +7,13 @@ import org.springframework.web.bind.annotation.GetMapping;
 public class IndexController {
 	
 	@GetMapping("/")
-	public String getIndex() {
+	public String getHomepage() {
+		
+		return "Homepage";
+	}
+	
+	@GetMapping("/admin")
+	public String getUser() {
 		
 		return "LoginForm";
 	}
