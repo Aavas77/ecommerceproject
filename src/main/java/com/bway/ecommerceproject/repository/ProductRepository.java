@@ -8,6 +8,6 @@ import com.bway.ecommerceproject.model.Product;
 
 public interface ProductRepository extends JpaRepository<Product, Integer>{
 	
-	List<Product> findByCategory_Id(int categoryId);
+	List<Product> findAllByCategory_Id(int categoryId);
 
 }
