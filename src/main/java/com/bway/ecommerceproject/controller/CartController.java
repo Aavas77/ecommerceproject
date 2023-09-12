@@ -1,5 +1,7 @@
 package com.bway.ecommerceproject.controller;
 
+import javax.servlet.http.HttpSession;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
@@ -41,14 +43,14 @@ public class CartController {
     }
 	
 	@GetMapping("/view")
-	public String viewCart(Model model) {
+	public String viewCart(Model model, HttpSession session) {
 		
 		int total = 0;
 		for(Cart cart : cartServ.getAllCartItems()) {
 			total = total + cart.getProduct().getPrice();
 		}
 		model.addAttribute("cartItems", cartServ.getAllCartItems());
-		model.addAttribute("total", total);
+		session.setAttribute("total", total);
 		return "UserCart";
 	}
 	
@@ -56,6 +58,11 @@ public class CartController {
 	public String deleteProductFromCart(@RequestParam int id) {
 		cartServ.deleteItemFromCart(id);
 		return "redirect:/cart/view";
+	}
+	
+	@GetMapping("/checkout")
+	public String userCheckOut() {
+		return "UserCheckOut";
 	}
 	
 }

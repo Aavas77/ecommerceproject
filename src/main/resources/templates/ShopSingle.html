@@ -97,15 +97,6 @@ https://templatemo.com/tm-559-zay-shop
                                 
                                 <div class="row pb-3">
    									 	<div class="col d-grid">
-        									<form >
-            								<input type="hidden" name="productId" th:value="${product.id}" />
-            								<button type="submit" class="btn btn-block btn-success btn-lg" name="submit" value="buy">Buy</button>
-        								</form>
-    								</div>
-								</div>
-                                
-                                <div class="row pb-3">
-   									 	<div class="col d-grid">
         									<form th:action="@{/cart/add}" method="post">
             								<input type="hidden" name="productId" th:value="${product.id}" />
             								<button type="submit" class="btn btn-block btn-success btn-lg" name="submit" value="addtocart">Add To Cart</button>
