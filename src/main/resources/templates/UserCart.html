@@ -64,7 +64,7 @@
                                         </div>
                                         <div class="mt-5 d-flex justify-content-between align-items-center">
                                             <div>
-                                                <a href="#!" type="button" class="card-link-secondary small text-uppercase mr-3"><i
+                                                <a th:href="@{/cart/delete(id=${c.id})}" type="button" class="card-link-secondary small text-uppercase mr-3"><i
                                                         class="fas fa-trash-alt mr-1"></i> Remove item </a>
 
                                             </div>
@@ -88,40 +88,38 @@
                 <!--Grid column-->
 
                 <!--Grid column-->
-				<div class="col-lg-4" th:with="total=0">
+				<div class="col-lg-4">
 				    <!-- Card -->
 				    <div class="card mb-4">
-				        <div class="card-body">
-				            <h5 class="mb-3">Total Amount</h5>
-				
-				            <!-- Calculate the total price -->
-				            <ul class="list-group list-group-flush">
-				                <li class="list-group-item d-flex justify-content-between align-items-center border-0 px-0 mb-3" th:each="cartItem : ${cartItems}">
-				                    <div>
-				                        <!-- Display individual product prices here -->
-				                        <strong th:text="${cartItem.product.name}"></strong>
-				                        <strong>
-				                            <p class="mb-0">(including VAT)</p>
-				                        </strong>
-				                    </div>
-				                    <span><strong>Rs. <span th:text="${cartItem.product.price}"></span></strong></span>
-				                </li>
-				            </ul>
-				
-				            <!-- Calculate the total price outside the loop -->
-				            <div th:each="cartItem : ${cartItems}">
-				                <th:block th:with="total=${total + cartItem.product.price}"></th:block>
-				            </div>
-				
-				            <!-- Display the total price below the card -->
-				            <div>
-				                <strong>Total Amount:</strong>
-				                <span><strong>Rs. <span th:text="${total}"></span></strong></span>
-				            </div>
-				
-				            <a th:href="@{/checkout}" class="btn btn-primary btn-block waves-effect waves-light">PROCEED TO CHECKOUT</a>
-				        </div>
-				    </div>
+                        <div class="card-body">
+
+                            <h5 class="mb-3">The total amount </h5>
+
+                            <ul class="list-group list-group-flush">
+                                <li class="list-group-item d-flex justify-content-between align-items-center border-0 px-0 pb-0">
+                                    Amount Payable
+                                    <span>Rs.<span th:text="${total}"></span></span>
+                                </li>
+                                <li class="list-group-item d-flex justify-content-between align-items-center px-0">
+                                    Shipping
+                                    <span>Gratis</span>
+                                </li>
+                                <li class="list-group-item d-flex justify-content-between align-items-center border-0 px-0 mb-3">
+                                    <div>
+                                        <strong>The total amount of</strong>
+                                        <strong>
+                                            <p class="mb-0">(including VAT)</p>
+                                        </strong>
+                                    </div>
+                                    <span><strong>Rs.<span th:text="${total}"></span></strong></span>
+                                </li>
+                            </ul>
+
+                            <a th:href="@{/checkout}" h class="btn btn-primary btn-block waves-effect waves-light">Go To
+                                Checkout</a>
+
+                        </div>
+                    </div>
 				</div>
 
                 <!--Grid column-->

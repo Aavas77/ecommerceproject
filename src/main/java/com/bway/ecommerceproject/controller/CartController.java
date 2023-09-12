@@ -42,9 +42,20 @@ public class CartController {
 	
 	@GetMapping("/view")
 	public String viewCart(Model model) {
+		
+		int total = 0;
+		for(Cart cart : cartServ.getAllCartItems()) {
+			total = total + cart.getProduct().getPrice();
+		}
 		model.addAttribute("cartItems", cartServ.getAllCartItems());
-	
+		model.addAttribute("total", total);
 		return "UserCart";
+	}
+	
+	@GetMapping("/delete")
+	public String deleteProductFromCart(@RequestParam int id) {
+		cartServ.deleteItemFromCart(id);
+		return "redirect:/cart/view";
 	}
 	
 }
