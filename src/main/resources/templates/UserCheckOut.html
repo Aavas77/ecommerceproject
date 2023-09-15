@@ -50,7 +50,7 @@
                                 <!-- First name -->
                                 <div class="md-form md-outline mb-0 mb-lg-4">
                                     <label for="firstName">First name</label>
-                                    <input type="text" id="firstName" required class="form-control mb-0 mb-lg-2">
+                                    <input type="text" th:value="${session.loggedIn.firstName}" id="firstName" required class="form-control mb-0 mb-lg-2">
                                 </div>
 
                             </div>
@@ -62,7 +62,7 @@
                                 <!-- Last name -->
                                 <div class="md-form md-outline">
                                     <label for="lastName">Last name</label>
-                                    <input type="text" id="lastName" required class="form-control">
+                                    <input type="text" th:value="${session.loggedIn.lastName}" id="lastName" required class="form-control">
                                 </div>
 
                             </div>
@@ -85,7 +85,7 @@
                         <!-- Address Part 1 -->
                         <div class="md-form md-outline mt-2">
                             <label for="form14">Address (Line 1)</label>
-                            <input type="text" required id="form14" placeholder="House number and street name" class="form-control">
+                            <input type="text" th:value="${session.loggedIn.address.street}" required id="form14" placeholder="House number and street name" class="form-control">
                         </div>
 
                         <!-- Address Part 2 -->
@@ -104,20 +104,20 @@
                         <!-- Town / City -->
                         <div class="md-form md-outline mt-2">
                             <label for="form17">Town / City</label>
-                            <input type="text" required id="form17" class="form-control">
+                            <input type="text" th:value="${session.loggedIn.address.city}" required id="form17" class="form-control">
 
                         </div>
 
                         <!-- Phone -->
                         <div class="md-form md-outline mt-2">
                             <label for="form18">Phone</label>
-                            <input type="number" minlength="10" maxlength="10" required id="form18" class="form-control">
+                            <input type="text" th:value="${session.loggedIn.phone}" required id="form18" class="form-control">
                         </div>
 
                         <!-- Email address -->
                         <div class="md-form md-outline mt-2">
                             <label for="form19">Email address</label>
-                            <input type="email" required id="form19" class="form-control">
+                            <input type="email" th:value="${session.loggedIn.email}" required id="form19" class="form-control">
                         </div>
 
                         <!-- Additional information -->
